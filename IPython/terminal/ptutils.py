@@ -170,6 +170,9 @@ class IPythonPTCompleter(Completer):
                 c.text, body, offset
             )
             min_elide = 30 if self.shell is None else self.shell.min_elide
+            abbreviate = True
+            if self.shell is not None:
+                abbreviate = self.shell.abbrev_file_completions
             if c.type == "function":
                 yield Completion(
                     adjusted_text,

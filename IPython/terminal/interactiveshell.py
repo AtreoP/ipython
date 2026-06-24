@@ -231,6 +231,20 @@ class TerminalInteractiveShell(InteractiveShell):
     debugger_history_file = Unicode(
         "~/.pdbhistory", help="File in which to store and read history"
     ).tag(config=True)
+    
+    abbrev_file_completions = Bool(
+    True,
+    help="""
+    Whether to abbreviate long file paths in completion results.
+    
+    When True (default), long file paths are abbreviated to show only the
+    first and last parts separated by ellipsis (e.g., '/h…s/').
+    When False, full file paths are displayed without abbreviation.
+    
+    This is useful when working with deeply nested directory structures
+    where the abbreviated form loses important information.
+    """,
+    ).tag(config=True)
 
     simple_prompt = Bool(_use_simple_prompt,
         help="""Use `raw_input` for the REPL, without completion and prompt colors.
